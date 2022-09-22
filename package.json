@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development nodemon app.js"
+  },
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
