@@ -12,7 +12,7 @@ dotenv.config();
 
 const originURL =
   process.env.NODE_ENV === "production"
-    ? "https://jambpolicy.web.app"
+    ? "https://seminarrating.web.app"
     : "http://localhost:3000";
 
 const app = express();
