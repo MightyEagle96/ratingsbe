@@ -24,6 +24,7 @@ export { facilitatorModel };
 const votes = new Schema({
   voter: { type: Schema.Types.ObjectId, ref: "Voter" },
   facilitator: { type: Schema.Types.ObjectId, ref: "Facilitator" },
+  votes: { type: Number, default: 0 },
 });
 
 const votesModel = model("Votes", votes);

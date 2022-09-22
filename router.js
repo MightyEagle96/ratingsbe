@@ -17,6 +17,6 @@ router
   .post("/createFacilitator", CreateFacilitator)
   .get("/getFacilitators", GetFacilitators)
   .post("/rateFacilitator/:id", RateFacilitator)
-  .get("/getVotes", GetVotes);
+  .post("/getVotes", GetVotes);
 
 export default router;

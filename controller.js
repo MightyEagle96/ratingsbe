@@ -48,7 +48,6 @@ export const RateFacilitator = async (req, res) => {
       });
     }
 
-    console.log(req.body);
     const facilitator = await facilitatorModel.findById(req.body.facilitator);
 
     if (facilitator) {
@@ -56,8 +55,17 @@ export const RateFacilitator = async (req, res) => {
         votes: facilitator.votes + req.body.votes,
       });
 
-      votesModel.create({ voter: voter._id, facilitator: facilitator._id });
-      res.json({ voter: voter._id, facilitator: facilitator._id });
+      await votesModel.create({
+        voter: voter._id,
+        facilitator: facilitator._id,
+        votes: req.body.votes,
+      });
+
+      const responses = await votesModel
+        .find({ voter: voter._id })
+        .populate({ path: "facilitator", select: ["instructor", "topic"] });
+
+      res.json(responses);
     } else res.status(500).send("something is wrong");
   } catch (error) {
     console.log(new Error(error).message);
@@ -66,6 +74,8 @@ export const RateFacilitator = async (req, res) => {
 };
 
 export const GetVotes = async (req, res) => {
-  const data = await votesModel.find();
+  const data = await votesModel
+    .find({ voter: req.body.voter })
+    .populate({ path: "facilitator", select: ["instructor", "topic"] });
   res.json(data);
 };
