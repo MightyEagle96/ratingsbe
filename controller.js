@@ -79,3 +79,9 @@ export const GetVotes = async (req, res) => {
     .populate({ path: "facilitator", select: ["instructor", "topic"] });
   res.json(data);
 };
+
+export const OverallVotes = async (req, res) => {
+  const data = await facilitatorModel.find();
+
+  res.json(data);
+};
