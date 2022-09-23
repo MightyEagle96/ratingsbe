@@ -85,3 +85,8 @@ export const OverallVotes = async (req, res) => {
 
   res.json(data);
 };
+
+export const PeopleThatVoted = async (req, res) => {
+  const data = await votesModel.find({ facilitator: req.body.facilitator });
+  res.json(data.length);
+};

@@ -4,6 +4,7 @@ import {
   GetFacilitators,
   GetVotes,
   OverallVotes,
+  PeopleThatVoted,
   RateFacilitator,
   Registration,
 } from "./controller.js";
@@ -19,6 +20,7 @@ router
   .get("/getFacilitators", GetFacilitators)
   .post("/rateFacilitator/:id", RateFacilitator)
   .post("/getVotes", GetVotes)
-  .get("/overallVotes", OverallVotes);
+  .get("/overallVotes", OverallVotes)
+  .post("/peopleThatVoted", PeopleThatVoted);
 
 export default router;
