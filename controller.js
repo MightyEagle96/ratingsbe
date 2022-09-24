@@ -83,7 +83,10 @@ export const GetVotes = async (req, res) => {
 export const OverallVotes = async (req, res) => {
   const data = await facilitatorModel.find();
 
-  res.json(data);
+  const sortedData = data.sort((a, b) =>
+    a.votes < b.votes ? 1 : b.votes < a.votes ? -1 : 0
+  );
+  res.json(sortedData);
 };
 
 export const PeopleThatVoted = async (req, res) => {
