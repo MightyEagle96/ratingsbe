@@ -93,3 +93,14 @@ export const PeopleThatVoted = async (req, res) => {
   const data = await votesModel.find({ facilitator: req.body.facilitator });
   res.json(data.length);
 };
+
+export const CloseRegistration = async (req, res, next) => {
+  const closeTime = new Date(2022, 8, 24, 9, 0, 0);
+
+  if (Date.now >= Date.parse(closeTime)) {
+    return res.status(400).json({
+      title: "Voting has ended",
+      message: "The time frame for rating the facilitators has elapsed.",
+    });
+  } else next();
+};

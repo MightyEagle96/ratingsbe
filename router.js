@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  CloseRegistration,
   CreateFacilitator,
   GetFacilitators,
   GetVotes,
@@ -15,7 +16,7 @@ router
   .get("/", (req, res) => {
     res.json({ message: "Hello" });
   })
-  .post("/register", Registration)
+  .post("/register", CloseRegistration, Registration)
   .post("/createFacilitator", CreateFacilitator)
   .get("/getFacilitators", GetFacilitators)
   .post("/rateFacilitator/:id", RateFacilitator)
